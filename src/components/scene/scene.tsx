@@ -1,5 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import Grid from "../shapes/grid";
 
 function Scene() {
   return (
@@ -22,6 +23,7 @@ function Scene() {
       />
       <ambientLight intensity={0.5} />
       <directionalLight color="white" position={[1, 5, 5]} />
+      <Grid />
     </Canvas>
   );
 }
