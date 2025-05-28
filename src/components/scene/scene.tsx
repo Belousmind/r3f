@@ -7,7 +7,7 @@ function Scene() {
     <Canvas
       style={{ width: "100%", height: "100%" }}
       camera={{
-        position: [0, 0, 4],
+        position: [0, 0, 5],
         fov: 75,
         near: 0.1,
         far: 10,
@@ -20,6 +20,8 @@ function Scene() {
         maxPolarAngle={(Math.PI * 3) / 4}
         minAzimuthAngle={-Math.PI / 4}
         maxAzimuthAngle={Math.PI / 4}
+        minDistance={3}
+        maxDistance={5}
       />
       <ambientLight intensity={1} />
       <directionalLight color="white" position={[1, 5, 5]} />

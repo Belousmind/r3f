@@ -3,7 +3,7 @@ import { RoundedBox } from "@react-three/drei";
 function RoundBox({ ...props }) {
   return (
     <RoundedBox
-      args={[1, 1, 0.2]}
+      args={[1, 1, 0.3]}
       radius={0.06}
       smoothness={8}
       bevelSegments={12}
