@@ -21,7 +21,7 @@ function Scene() {
         minAzimuthAngle={-Math.PI / 4}
         maxAzimuthAngle={Math.PI / 4}
       />
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={1} />
       <directionalLight color="white" position={[1, 5, 5]} />
       <Grid />
     </Canvas>

@@ -9,7 +9,7 @@ function RoundBox({ ...props }) {
       bevelSegments={12}
       {...props}
     >
-      <meshStandardMaterial {...props} roughness={0.8} />
+      <meshStandardMaterial {...props} roughness={0.4} />
     </RoundedBox>
   );
 }

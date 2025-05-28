@@ -14,7 +14,7 @@ function Cell({ position, index }: CellProps) {
   const dispatch = useDispatch();
 
   const value = useSelector((state: RootState) => state.board.board[index]);
-
+ 
   const handleClick = () => {
     if (!value) {
       dispatch(makeMove(index));
@@ -23,7 +23,7 @@ function Cell({ position, index }: CellProps) {
 
   return (
     <group position={position} onClick={handleClick}>
-      <RoundBox color={"#5409DA"} />
+      <RoundBox color={"#1b9aaa"} />
       {value === "X" && <XMark position={[0, 0, 0.2]} />}
       {value === "O" && <OMark position={[0, 0, 0.2]} />}
     </group>
