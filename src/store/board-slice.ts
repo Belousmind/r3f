@@ -9,6 +9,7 @@ const initialState: GameState = {
   currentPlayer: "X",
   winner: null,
   vsBot: false,
+  isDraw: false,
 };
 
 const boardSlice = createSlice({
@@ -29,6 +30,12 @@ const boardSlice = createSlice({
         return;
       }
 
+      const isBoardFull = state.board.every((cell) => cell !== null);
+      if (isBoardFull) {
+        state.isDraw = true;
+        return;
+      }
+
       state.currentPlayer = state.currentPlayer === "X" ? "O" : "X";
     },
     setGameMode: (state, action: PayloadAction<"bot" | "player">) => {
@@ -39,6 +46,7 @@ const boardSlice = createSlice({
       state.isGameStart = false;
       state.currentPlayer = "X";
       state.winner = null;
+      state.isDraw = false;
     },
   },
 });

@@ -7,4 +7,5 @@ export type GameState = {
   currentPlayer: Player;
   winner: Player | null;
   vsBot: boolean;
-}
+  isDraw: boolean;
+};
