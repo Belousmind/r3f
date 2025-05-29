@@ -1,6 +1,6 @@
 import "./App.css";
 import { Provider } from "react-redux";
-import { store } from "./components/store";
+import { store } from "./store";
 import Scene from "./components/scene/scene";
 import { ResetGameButton, PlayWithBot } from "./components/button/button";
 import TurnIndicator from "./components/turn-indicator/turn-indicator";

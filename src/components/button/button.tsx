@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { resetGame, setGameMode } from "../store/board-slice";
+import { resetGame, setGameMode } from "../../store/board-slice";
 
 export function ResetGameButton() {
   const dispatch = useDispatch();

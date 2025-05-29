@@ -1,6 +1,6 @@
 import type { AppThunk } from "./index";
 import { makeMove } from "./board-slice";
-import { getSmartMove } from "../../utils/game-logic";
+import { getSmartMove } from "../utils/game-logic";
 
 export const playerMove =
   (index: number): AppThunk =>

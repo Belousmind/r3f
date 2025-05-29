@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { getWinner } from "../../utils/game-logic";
+import { getWinner } from "../utils/game-logic";
 import type { GameState } from "./types";
 
 const initialState: GameState = {

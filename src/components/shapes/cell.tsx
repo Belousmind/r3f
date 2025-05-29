@@ -1,7 +1,7 @@
 import RoundBox from "./rounded-box";
-import type { RootState } from "../store";
-import { playerMove } from "../store/board-thunks";
-import { useAppDispatch } from "../store";
+import type { RootState } from "../../store";
+import { playerMove } from "../../store/board-thunks";
+import { useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
 import XMark from "./x-mark";
 import OMark from "./o-mark";
@@ -16,7 +16,7 @@ type CellProps = {
 };
 
 function Cell({ position, index }: CellProps) {
-  const dispatch = useAppDispatch(); 
+  const dispatch = useAppDispatch();
 
   const value = useSelector((state: RootState) => state.board.board[index]);
 
