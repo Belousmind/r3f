@@ -1,7 +1,8 @@
 import RoundBox from "./rounded-box";
 import type { RootState } from "../store";
-import { makeMove } from "../store/board-slice";
-import { useDispatch, useSelector } from "react-redux";
+import { playerMove } from "../store/board-thunks";
+import { useAppDispatch } from "../store";
+import { useSelector } from "react-redux";
 import XMark from "./x-mark";
 import OMark from "./o-mark";
 import { useRef } from "react";
@@ -15,14 +16,15 @@ type CellProps = {
 };
 
 function Cell({ position, index }: CellProps) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch(); 
+
   const value = useSelector((state: RootState) => state.board.board[index]);
 
   const ref = useRef<Group>(null!);
 
   const handleClick = () => {
     if (!value) {
-      dispatch(makeMove(index));
+      dispatch(playerMove(index));
     }
   };
 

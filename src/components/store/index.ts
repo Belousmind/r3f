@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import boardReducer from "./board-slice";
+import { useDispatch } from "react-redux";
 
 export const store = configureStore({
   reducer: {
@@ -9,3 +10,8 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = (
+  dispatch: AppDispatch,
+  getState: () => RootState
+) => ReturnType;
+export const useAppDispatch: () => AppDispatch = useDispatch;

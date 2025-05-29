@@ -1,11 +1,16 @@
 import { useDispatch } from "react-redux";
-import { resetGame } from "../store/board-slice";
+import { resetGame, setGameMode } from "../store/board-slice";
 
-function Button() {
-
+export function ResetGameButton() {
   const dispatch = useDispatch();
 
   return <button onClick={() => dispatch(resetGame())}>Rest Game</button>;
 }
 
-export default Button;
+export function PlayWithBot() {
+  const dispatch = useDispatch();
+
+  return (
+    <button onClick={() => dispatch(setGameMode("bot"))}>Game with Bot</button>
+  );
+}

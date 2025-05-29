@@ -1,42 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-type Player = "X" | "O";
-type Cell = Player | null;
-
-interface GameState {
-  isGameStart: boolean;
-  board: Cell[];
-  currentPlayer: Player;
-  winner: Player | null;
-}
+import { getWinner } from "../../utils/game-logic";
+import type { GameState } from "./types";
 
 const initialState: GameState = {
   isGameStart: false,
   board: Array(9).fill(null),
   currentPlayer: "X",
   winner: null,
+  vsBot: false,
 };
-
-const winningCombinations = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
-
-function getWinner(board: (null | "X" | "O")[]): "X" | "O" | null {
-  for (const [a, b, c] of winningCombinations) {
-    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      return board[a];
-    }
-  }
-  return null;
-}
 
 const boardSlice = createSlice({
   name: "board",
@@ -58,6 +31,9 @@ const boardSlice = createSlice({
 
       state.currentPlayer = state.currentPlayer === "X" ? "O" : "X";
     },
+    setGameMode: (state, action: PayloadAction<"bot" | "player">) => {
+      state.vsBot = action.payload === "bot";
+    },
     resetGame: (state) => {
       state.board = Array(9).fill(null);
       state.isGameStart = false;
@@ -67,5 +43,5 @@ const boardSlice = createSlice({
   },
 });
 
-export const { makeMove, resetGame } = boardSlice.actions;
+export const { makeMove, setGameMode, resetGame } = boardSlice.actions;
 export default boardSlice.reducer;
