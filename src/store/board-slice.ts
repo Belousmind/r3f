@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { getWinner } from "../utils/game-logic";
 import type { GameState } from "./types";
+import { saveGameToLocalStorage } from "../utils/local-storage";
 
-const initialState: GameState = {
+export const initialState: GameState = {
   isGameStart: false,
   board: Array(9).fill(null),
   currentPlayer: "X",
@@ -48,16 +49,19 @@ const boardSlice = createSlice({
       }
 
       state.currentPlayer = state.currentPlayer === "X" ? "O" : "X";
+      saveGameToLocalStorage(state);
     },
     setGameMode: (state, action: PayloadAction<"bot" | "player">) => {
       state.vsBot = action.payload === "bot";
       state.isGameStart = true;
+      saveGameToLocalStorage(state);
     },
     continueGame: (state) => {
       state.board = Array(9).fill(null);
       state.currentPlayer = "X";
       state.winner = null;
       state.isDraw = false;
+      saveGameToLocalStorage(state);
     },
     resetGame: (state) => {
       state.isGameStart = false;
@@ -66,9 +70,11 @@ const boardSlice = createSlice({
       state.winner = null;
       state.isDraw = false;
       state.stats = { xWins: 0, oWins: 0, draw: 0 };
+      saveGameToLocalStorage(state);
     },
   },
 });
 
-export const { makeMove, setGameMode, resetGame, continueGame } = boardSlice.actions;
+export const { makeMove, setGameMode, resetGame, continueGame } =
+  boardSlice.actions;
 export default boardSlice.reducer;

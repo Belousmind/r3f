@@ -11,6 +11,7 @@ function Game() {
   );
   return (
     <>
+    <h1>Tic Tac Toe</h1>
       {isGameStart ? (
         <>
           <Scene />

@@ -1,11 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import boardReducer from "./board-slice";
 import { useDispatch } from "react-redux";
+import boardReducer, { initialState } from "./board-slice";
+import { loadGameFromLocalStorage } from "../utils/local-storage";
+
+
+const savedBoard = loadGameFromLocalStorage();
 
 export const store = configureStore({
   reducer: {
     board: boardReducer,
   },
+  preloadedState: savedBoard
+    ? { board: { ...initialState, ...savedBoard } }
+    : undefined,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
