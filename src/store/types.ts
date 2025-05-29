@@ -8,4 +8,9 @@ export type GameState = {
   winner: Player | null;
   vsBot: boolean;
   isDraw: boolean;
+  stats: {
+    xWins: number;
+    oWins: number;
+    draw: number;
+  };
 };

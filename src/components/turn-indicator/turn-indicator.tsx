@@ -23,3 +23,17 @@ function TurnIndicator() {
 }
 
 export default TurnIndicator;
+
+export function GameStats() {
+  const stats = useSelector((state: RootState) => state.board.stats);
+
+  return (
+    <div>
+      <div>X Wins {stats.xWins}</div>
+      <div>Draws {stats.draw}</div>
+      <div>O Wins {stats.oWins}</div>
+    </div>
+  );
+}
+
+
